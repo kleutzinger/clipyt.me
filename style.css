@@ -28,3 +28,7 @@ input[type="text"]
     border: none;
 */
 }
+
+a{
+	text-decoration:none;
+}
