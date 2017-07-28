@@ -1,0 +1,7 @@
+- You can edit the times after adding the video
+- Try pasting a youtube link with a timestamp (right click a yt video)
+- You can drag one of the links already in the playlist into the video id box
+- The url stays updated so you can send it to a friend straight from the url bar
+	-This also means bookmarking pages works
+- Put the start time at 0 and the end time at -1 to add an entire video
+- Change the title of the playlist by clicking the title
