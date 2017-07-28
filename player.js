@@ -58,7 +58,14 @@ function onPlayerStateChange(event) {
 		  startSeconds: videos[index].startSeconds,
 		  endSeconds: videos[index].endSeconds
 		});
+		console.log(event.target.getVideoData())
 		//writePartitions(videos,index);
+		}
+	}
+	if (event.data === YT.PlayerState.PLAYING){
+		data = player.getVideoData();
+		if(data.video_id == videos[index].vid){
+			setName(index, data.title);
 		}
 	}
 }

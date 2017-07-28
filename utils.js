@@ -29,6 +29,7 @@ function newClip(vid, startSeconds, endSeconds){
     clip.vid = vid;
     clip.startSeconds = startSeconds;
     clip.endSeconds = endSeconds;
+    clip.name = vid;
     if (isNaN(clip.endSeconds)) {return false;}
     return clip;
 }
@@ -60,13 +61,15 @@ function writePartitions(p,boldIndex){
 		element = "";
 		if (i==boldIndex){element+= "<strong>";}
 		element+=
-			'<li>'+'<span id="vidli'+i+'" style="cursor:pointer;" onclick="playSingleClip('+i+')"> &#9658;</span>' +
+			'<li>'+
+			'<span id="vidli'+i+'" style="cursor:pointer;" onclick="playSingleClip('+i+')"> &#9658;</span>' +
 			'&nbsp;<input id=start'+i+' oninput="startChange('+i+');" type="number" pattern=[0-9] value='+p[i].startSeconds+'>-'+
 			'<input   id=end'+i+' oninput="endChange('+i+');"   type="number" pattern=[0-9] value='+p[i].endSeconds+'>'+
-			"&nbsp;&nbsp;<a href=https://youtu.be/"+p[i].vid+"?t="+p[i].startSeconds+">"+p[i].vid+"</a>" +
 			'&nbsp;&nbsp;<span onclick="moveUp('+i+')" style="cursor:pointer;">&#8593;</span>'+
 			'&nbsp;<span onclick=moveDown('+i+') style="cursor:pointer;">&#8595;</span>'+
-			'&nbsp;<span style="cursor:pointer;" onclick="deleteClip('+i+');"> &#215;</span>  </li>';
+			'&nbsp;<span style="cursor:pointer;" onclick="deleteClip('+i+');"> &#215;</span>'+
+			'&nbsp;&nbsp;<a id="vidlink'+i+'" href="https://youtu.be/'+p[i].vid+'?t='+p[i].startSeconds+'">'+p[i].name+'</a>' +
+			'</li>';
 		if(i==boldIndex){element+="</strong>";}
 		$("#partition_list").append($(element));
     }
@@ -96,7 +99,7 @@ function constructHash(){
     v = videos;
     for(i=0;i<v.length;i++){
         if(i>0){lastid = v[i-1].vid;}
-        if (v[i].id == lastid){ temp = "!"; }
+        if (v[i].vid == lastid){ temp = "!"; }
         else {temp = v[i].vid};
         h = temp + "+" + v[i].startSeconds + "+" + v[i].endSeconds + "+";
         hash_string+= h;
@@ -123,7 +126,7 @@ function sendButton(){
 function timestampShortcut(){
 	_id = $("#addvideoid").val();
 	if (!_id){ _id = "";}
-	t_index = Math.max(_id.indexOf("&t="), t_index = _id.indexOf("?t="));
+	t_index = Math.max(_id.indexOf("&t="), _id.indexOf("?t="));
 	if(t_index != -1){ // there is a timestamp in the yt link
 		timestr = _id.substring(t_index+3, _id.length);
 		timeint = parseInt(timestr);
@@ -138,7 +141,7 @@ function addButton(){
     _id = youtube_parser(_id);
     _start = document.getElementById('startid').value;
     _start = hmsToSecondsOnly(_start);
-    _end = document.getElementById('endid').value
+    _end = document.getElementById('endid').value;
     _end = hmsToSecondsOnly(_end);
 	clip = newClip(_id,_start,_end);
 	
@@ -220,5 +223,12 @@ function moveDown(i){
 		videos[i] = videos[i+1];
 		videos[i+1] = temp;
 		writePartitions(videos, -1);
+	}
+}
+
+function setName(i,name){
+	if (videos[i].name == videos[i].vid){
+		videos[i].name = name;
+		$("#vidlink"+i).text(name);
 	}
 }
