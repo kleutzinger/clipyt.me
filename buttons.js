@@ -97,10 +97,11 @@ function timestampShortcut(){
 }
 
 function clearInputs(){
-	startid
-	endid
-	addvideoid
 	$("#addvideoid").val("");
 	$("#startid").val("");
 	$("#endid").val("");
+}
+
+function example(){
+	window.location.href = "http://clipyt.me/#VQBbHzypBro+71+79+VQBbHzypBro+140+146+pZwvLFhYUL0+129+133+hGY44DIQb-A+81+92+MdcuaeYV9oM+164+177+IydCCUfPDLE+11+34+Interesting_Videos";
 }
