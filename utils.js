@@ -40,24 +40,17 @@ function updateHash(){
 function writePartitions(p,boldIndex){
 	updateHash();
     $("#partition_list").empty();
-    maxLengthNumber = 0;
-    for(i=0;i<p.length;i++){
-		s = p[i].startSeconds.toString();
-		e = p[i].endSeconds.toString();
-		curmax = Math.max(s.length, e.length);
-		maxLengthNumber = Math.max(maxLengthNumber, curmax);
-	}
     for (i=0;i<p.length;i++){
 		element = "";
 		if (i==boldIndex){element+= "<strong>";}
 		element+=
 			'<li>'+ //
-			'<span id="vidli'+i+'" style="cursor:pointer;" onclick="playSingleClip('+i+')"> &#9658;</span>&nbsp;' +
+			'<button id="vidli'+i+'" style="cursor:pointer;" onclick="playSingleClip('+i+')">&#9658;</button>&nbsp;' +
 			'<input id=start'+i+' oninput="startChange('+i+');" type="number" pattern=[0-9] value='+p[i].startSeconds+'>-'+
 			'<input id=end'  +i+' oninput="endChange  ('+i+');" type="number" pattern=[0-9] value='+p[i].endSeconds+'>&nbsp;&nbsp;'+
-			'<span onclick="moveUp('+i+')" style="cursor:pointer;">&#8593;</span>&nbsp;'+
-			'<span onclick=moveDown('+i+') style="cursor:pointer;">&#8595;</span>&nbsp;&nbsp;'+
-			'<span style="cursor:pointer;" onclick="deleteClip('+i+');"> &#215;</span>&nbsp;&nbsp;'+
+			'<button onclick="moveUp('+i+')">  &#8593;</button>'+
+			'<button onclick="moveDown('+i+')">&#8595;</button>&nbsp;'+
+			'<button onclick="deleteClip('+i+');"> &#215;</button>&nbsp;&nbsp;'+
 			'<a id="vidlink'+i+'" href="https://youtu.be/'+p[i].vid+'?t='+p[i].startSeconds+'">'+p[i].name+'</a>' +
 			'</li>';
 		if(i==boldIndex){element+="</strong>";}
