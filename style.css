@@ -35,3 +35,12 @@ input[type="text"]
 a{
 	text-decoration:none;
 }
+
+.control{
+	height:20px;
+	width:30px;
+}
+
+.vidlink{
+	white-space:nowrap;
+}
