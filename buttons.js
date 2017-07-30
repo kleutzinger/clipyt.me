@@ -95,3 +95,12 @@ function timestampShortcut(){
 		console.log(timestr);
 	}
 }
+
+function clearInputs(){
+	startid
+	endid
+	addvideoid
+	$("#addvideoid").val("");
+	$("#startid").val("");
+	$("#endid").val("");
+}
