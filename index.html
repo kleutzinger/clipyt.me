@@ -6,13 +6,16 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/css/jqueryui-editable.css" rel="stylesheet"/>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>	
-
-	<h2 style="display: inline-block;">Arrange clips from Youtube with clipyt.me</h2>
-	<h5 style="display: inline-block;">(by Kevin Leutzinger) <a href="https://github.com/kleutzinger/clipyt.me">[source]</a></h5>
-	<h5 style="display: inline-block;"><a href="./tips.html">[tips.html]</a></h5>
-	<h5 style="display: inline-block;"><a href="./#" onclick="example();">[example]</a></h5>
-	<br>
-    <div id="player"></div>
+	<div id="header">
+		<h2 style="display: inline-block;">Arrange clips from Youtube with clipyt.me</h2>
+		<h5 style="display: inline-block;">(by Kevin Leutzinger) <a href="https://github.com/kleutzinger/clipyt.me">[source]</a></h5>
+		<h5 style="display: inline-block;"><a href="./tips.html">[tips.html]</a></h5>
+		<h5 style="display: inline-block;"><a href="./#" onclick="example();">[example]</a></h5>
+	</div>
+	<div id="parent">
+	<div id="playercontainer" class="test">
+		<div id="player"></div>
+    </div>
     <script type='text/javascript' > 
 		var videos = []; 
 	</script>
@@ -24,6 +27,7 @@
 <!--
 	<button id='selectButtonid' value='https://www.youtube.com/watch?v=yKXaTLD9qoM' onclick='selectButton()' class='button big-btn'>Select Video to Partion</button>
 -->
+	<div id="allcontrols">
 	<p>
 		<div id="customtitle" contenteditable="true" style="font-size:30px" onblur="updateHash();">
 			Cool Playlist
@@ -51,10 +55,11 @@
 		<button id='addid' class='button big-btn' placeholder="hi there" onclick="addButton();">Add Clip</button>
 		to&nbsp;<select id='indexid'><option value='end'>end</option></select>
 	</p>
-	
+	</div>
 <!--
 	<div width=100px id='slider'></div>
 -->
+	</div>
 	</body>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

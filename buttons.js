@@ -100,6 +100,7 @@ function clearInputs(){
 	$("#addvideoid").val("");
 	$("#startid").val("");
 	$("#endid").val("");
+	randomColor();
 }
 
 function example(){

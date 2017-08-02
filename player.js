@@ -6,8 +6,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
 player = new YT.Player('player', {
-  height: '390',
-  width: '640',
+  height: '600',
+  width: '600',
   color: 'WHITE',
   events: {
 	'onReady': onPlayerReady,
@@ -33,6 +33,7 @@ function playTheseVideos(v, startIndex){
 	endSeconds: v[index].endSeconds})
 	player.playVideo();
 	bolden(index);
+	//randomColor();
 }
 
 function playSingleClip(i){
@@ -53,6 +54,7 @@ function onPlayerStateChange(event) {
 	  if (index < videos.length - 1) {
 		index++;
 		bolden(index);
+		//randomColor();
 		event.target.loadVideoById({
 		  videoId: videos[index].vid,
 		  startSeconds: videos[index].startSeconds,

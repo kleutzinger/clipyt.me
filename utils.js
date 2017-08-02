@@ -51,8 +51,10 @@ function writePartitions(p,boldIndex){
 			'<button onclick="moveUp('+i+')"      class="control">  &#8593;</button>'+
 			'<button onclick="moveDown('+i+')"    class="control">&#8595;</button>&nbsp;'+
 			'<button onclick="deleteClip('+i+');" class="control"> &#215;</button>&nbsp;&nbsp;'+
-			'<a id="vidlink'+i+'" href="https://youtu.be/'+p[i].vid+'?t='+p[i].startSeconds+'" class="vidlink">'+p[i].name+'</a>' +
-			'</li>';
+			'<div width=100px>'+
+				'<a id="vidlink'+i+'" href="https://youtu.be/'+p[i].vid+'?t='+p[i].startSeconds+'" class="vidlink">'+p[i].name+'</a>'+
+			'</div>'+
+			'</li>'
 		if(i==boldIndex){element+="</strong>";}
 		$("#partition_list").append($(element));
     }
@@ -118,3 +120,19 @@ function hmsToSecondsOnly(str) {
     }
     return s;
 }
+
+function randomColor(){
+	return -1;
+	color1 = [Math.random()*255,Math.random()*255,Math.random()*255].join(",");
+	color2 = [Math.random()*255,Math.random()*255,Math.random()*255].join(",");
+	str = "linear-gradient(rgb("+color1+"),rgb("+color2+")) 10;";
+	str = "linear-gradient(rgb("+color1+"),rgb("+color2+")) 10;";
+	str = "linear-gradient(red,black) 10;";
+	str = "-webkit-linear-gradient(left, #2F2727, #1a82f7);"
+	str = "linear-gradient(pink,rgb(255,255,0)) 10;"
+	$("#playercontainer").css("border-image", str);
+	console.log(str);
+	//$("#player.iframe").css("border-image", "linear-gradient(rgb("+color1+"),rgb("+color2+")) 10;");	
+}
+
+
