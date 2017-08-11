@@ -11,7 +11,7 @@
 }
 
 #header{
-	padding:0px;
+	padding-left:10px;
 	margin:0px;
 /*
 	display:flex;
@@ -38,6 +38,10 @@ iframe#player {
 		height:50%;
 		width:100%;
 	}
+	#allcontrols{
+		padding-left:2em;
+		padding-bottom:2em;
+	}
 }
 @media all and (orientation:landscape){
 	#parent{
@@ -56,6 +60,7 @@ iframe#player {
 	#allcontrols{
 		width:25%;
 		padding-left:1.5em;
+		padding-bottom:2em;
 	}
 
 }
@@ -130,4 +135,8 @@ h2{
 h5{
 	padding:0px;
 	margin:0px;
+}
+
+html, body {
+	margin: 0; padding: 0;
 }
