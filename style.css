@@ -1,66 +1,64 @@
 #playlistdiv{
-/*
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-
-	justify-content: center;
-*/
 
 }
 
 #parent{
-	display:flex;
+	height:100%;
+	width:100%;
+/*
 	flex-wrap:wrap;
-	justify-content:center;
+*/
 }
 
 #header{
-
+	padding:0px;
+	margin:0px;
 /*
 	display:flex;
 */
 }
 
-#allcontrols{
-	padding:1em;
-	width:20em;
-/*
-	display:flex;
-*/
-}
 
 iframe#player {
 	width:100%;
 	height:100%;
+/*
 	border: 20px solid;
 	border-image: linear-gradient(pink,rgb(255,255,0)) 10;
+*/
 
 }
-
-#playercontainer{
-	flex:1;
-	flex-grow:1;
-	display: -webkit-flex;
-	display: flex;
-	flex-basis:70%;
-	min-height:400px;
-	min-width:500px;
-	padding:1em;
+@media all and (orientation:portrait) {
+	#header{
 /*
-	min-width:500px;
-	min-height:400px;
-	margin-bottom:0px;
+		background-color:purple;
 */
-/*
-	-webkit-justify-content: center;
-	justify-content: center;
-	
-*/
+	}
+	#playercontainer{
+		height:50%;
+		width:100%;
+	}
 }
+@media all and (orientation:landscape){
+	#parent{
+		display:flex;
+		flex-wrap:wrap;
+	}
+	#header{
+/*
+		background-color:red;
+*/
+	}
+	#playercontainer{
+		width:70%;
+		height:90%;
+	}
+	#allcontrols{
+		width:25%;
+		padding-left:0.5em;
+	}
 
+}
 
 #partition_list {
 /*
@@ -108,3 +106,15 @@ a{
 
 ol, ul { display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; margin: 1em 0px; padding: 0;  text-wrap:wrap }
 
+body{
+	height:100%;
+	width:100%;
+}
+
+html{
+	height:100%;
+	width:100%;
+	background: #1a2a6c;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to top, #fdbb2d, #b21f1f, #1a2a6c);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to top, #fdbb2d, #b21f1f, #1a2a6c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
