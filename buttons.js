@@ -90,7 +90,7 @@ function timestampShortcut () {
     timestr = _id.substring(t_index + 3, _id.length);
     timeint = parseInt(timestr);
     $('#startid').val(timeint);
-    $('#endid').val(timeint + 1);
+    $('#endid').val(timeint + 10);
     console.log(timestr);
   }
 }

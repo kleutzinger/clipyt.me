@@ -51,7 +51,7 @@ function writePartitions (p, boldIndex) {
        '<button onclick="moveDown(' + i + ')"    class="control">&#8595;</button>&nbsp;' +
        '<button onclick="deleteClip(' + i + ');" class="control"> &#215;</button>&nbsp;&nbsp;' +
        '<div width=100px>' +
-       '<a id="vidlink' + i + '" href="https://youtu.be/' + p[i].vid + '?t=' + p[i].startSeconds + '" class="vidlink">' + p[i].name + '</a>' +
+       '<a target="_blank" id="vidlink' + i + '" href="https://youtu.be/' + p[i].vid + '?t=' + p[i].startSeconds + '" class="vidlink">' + p[i].name + '</a>' +
        '</div>' +
        '</li>';
     if (i === boldIndex) { element += '</strong>'; }
