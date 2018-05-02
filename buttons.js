@@ -24,10 +24,12 @@ function addButton () {
 }
 
 function sendButton () {
+  player.stopVideo();
   v = videos;
   hash_string = constructHash();
   sendUrl = 'http://clipyt.me/#' + hash_string;
     // if (window.location.href.indexOf("local") != -1) {sendUrl = "http://localhost:8000/#" + hash_string;}
+  writePartitions(videos, -1);
   window.prompt('Copy to clipboard: Ctrl+C (Cmd + C on mac)', sendUrl);
 }
 
@@ -73,6 +75,7 @@ function startChange (i) {
   val = $('#start' + i).val();
   videos[i].startSeconds = parseInt(val);
   updateHash();
+  $("#vidlink"+i).attr("href", getVideoHref(i));
 }
 
 function endChange (i) {
@@ -80,18 +83,27 @@ function endChange (i) {
   val = $('#end' + i).val();
   videos[i].endSeconds = parseInt(val);
   updateHash();
+  $("#vidlink"+i).attr("href", getVideoHref(i));
 }
 
 function timestampShortcut () {
   _id = $('#addvideoid').val();
   if (!_id) { _id = ''; }
   t_index = Math.max(_id.indexOf('&t='), _id.indexOf('?t='));
+  t2_index = Math.max(_id.indexOf('#t2='), -1);
+
   if (t_index != -1) { // there is a timestamp in the yt link
-    timestr = _id.substring(t_index + 3, _id.length);
+    timestr = _id.substring(t_index + 3);
     timeint = parseInt(timestr);
     $('#startid').val(timeint);
-    $('#endid').val(timeint + 10);
-    console.log(timestr);
+    $('#endid').val(timeint+10);
+  }
+  else {$('#startid').val(0); $('#endid').val(10);}
+
+  if (t2_index != -1) { // there is a timestamp in the yt link
+    timestr = _id.substring(t2_index + 4);
+    timeint = parseInt(timestr);
+    $('#endid').val(timeint);
   }
 }
 

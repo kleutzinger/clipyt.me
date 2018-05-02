@@ -10,5 +10,16 @@ $(document).ready(function () {
   $('#endid').on('input', endTimestampShortcut);
   $('#customtitle').on('focusin', updateHash);
   $('#customtitle').on('focusout', updateHash);
-	// ~ $("input").focusin(alert);
+
+  $(window).keydown(function(event) {
+    if(event.keyCode === 13 && event.target.id === "addvideoid"){
+      $("#addid").click();
+    }
+    if(event.ctrlKey && event.keyCode == 0x56) {
+      $('#clearid').click();
+      $('#addvideoid').focus();
+      if  ($("#startid").val() !== "")  {$('#addid').click();}
+    }
+  });
+
 });

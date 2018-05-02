@@ -51,7 +51,7 @@ function writePartitions (p, boldIndex) {
        '<button onclick="moveDown(' + i + ')"    class="control">&#8595;</button>&nbsp;' +
        '<button onclick="deleteClip(' + i + ');" class="control"> &#215;</button>&nbsp;&nbsp;' +
        '<div width=100px>' +
-       '<a target="_blank" id="vidlink' + i + '" href="https://youtu.be/' + p[i].vid + '?t=' + p[i].startSeconds + '" class="vidlink">' + p[i].name + '</a>' +
+       '<a target="_blank" id="vidlink' + i + '" href="https://youtu.be/' + p[i].vid + '?t=' + p[i].startSeconds + `#t2=${p[i].endSeconds}` + '" class="vidlink">' + p[i].name + '</a>' +
        '</div>' +
        '</li>';
     if (i === boldIndex) { element += '</strong>'; }
@@ -116,7 +116,7 @@ function hmsToSecondsOnly (str) {
     s += m * parseInt(p.pop(), 10);
     m *= 60;
   }
-  return s;
+  return 0||s;
 }
 
 function randomColor () {
@@ -131,4 +131,8 @@ function randomColor () {
   $('#playercontainer').css('border-image', str);
   console.log(str);
 	// $("#player.iframe").css("border-image", "linear-gradient(rgb("+color1+"),rgb("+color2+")) 10;");
+}
+
+function getVideoHref (i) {
+  return 'https://youtu.be/' + videos[i].vid + '?t=' + videos[i].startSeconds + `#t2=${videos[i].endSeconds}`;
 }
