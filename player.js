@@ -1,4 +1,5 @@
 // var videos = [];
+var hasUnstarted = false;
 var tag = document.createElement('script');
 tag.src = 'http://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -17,12 +18,7 @@ function onYouTubeIframeAPIReady () {
 }
 
 var index = 0;
-// ~ function setVideos(v){
-	// ~ videos = v;
-// ~ };
-// ~ function getVideos(){
-	// ~ return videos;
-// ~ }
+
 function playTheseVideos (v, startIndex) {
   if (!v) { return false; }
   index = startIndex;
@@ -46,12 +42,14 @@ function onPlayerReady (event) {
   }
 }
 
-function onPlayerStateChange (event) {
-// console.log("State change: " + event.data + " for index: " + index);
 
-  if (event.data === YT.PlayerState.ENDED && player.getVideoLoadedFraction() > 0) {
-	  // console.log(index);
+
+function onPlayerStateChange (event) {
+  if (event.data === YT.PlayerState.UNSTARTED) { hasUnstarted = true; }
+  //console.log("State change: " + event.data + " for index: " + index);
+  if (event.data === YT.PlayerState.ENDED && player.getVideoLoadedFraction() > 0 && hasUnstarted) {
 	  if (index < videos.length - 1) {
+    hasUnstarted = false;
     index++;
     bolden(index);
 		// randomColor();
@@ -60,8 +58,6 @@ function onPlayerStateChange (event) {
 		  startSeconds: videos[index].startSeconds,
 		  endSeconds: videos[index].endSeconds
     });
-    console.log(event.target.getVideoData());
-		// writePartitions(videos,index);
   }
   }
   if (event.data === YT.PlayerState.PLAYING) {
