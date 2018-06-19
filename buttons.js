@@ -95,8 +95,8 @@ function timestampShortcut () {
   if (t_index != -1) { // there is a timestamp in the yt link
     timestr = _id.substring(t_index + 3);
     timeint = parseInt(timestr);
-    $('#startid').val(timeint);
-    $('#endid').val(timeint+10);
+    $('#startid').val(timeint-10);
+    $('#endid').val(timeint);
   }
   else {$('#startid').val(0); $('#endid').val(10);}
 
