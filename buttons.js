@@ -27,7 +27,7 @@ function sendButton () {
   player.stopVideo();
   v = videos;
   hash_string = constructHash();
-  sendUrl = 'http://clipyt.me/#' + hash_string;
+  sendUrl = 'https://clipyt.kevbot.xyz/#' + hash_string;
     // if (window.location.href.indexOf("local") != -1) {sendUrl = "http://localhost:8000/#" + hash_string;}
   writePartitions(videos, -1);
   window.prompt('Copy to clipboard: Ctrl+C (Cmd + C on mac)', sendUrl);
