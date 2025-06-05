@@ -8,6 +8,6 @@ https://clipyt.kevbot.xyz/#VQBbHzypBro+75+77+pZwvLFhYUL0+129+133+IydCCUfPDLE+11+
 
 
 ## Notes
-- This used to be hosted at https://clipyt.me but I no longer have that domain.
+- This used to be hosted at clipyt.me but I no longer have that domain.
 - This is one of the first standalone websites I ever made (2017), and it's pretty cool and still useful without any updates.
 - The name is like Clip YT (like clip youtube)
